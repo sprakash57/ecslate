@@ -14,9 +14,10 @@ export const woman4 = require('./assets/woman4.png');
 
 export const DB = [
     {
+        id: 0,
         category: 'man',
         featured: true,
-        bestSell: true,
+        bestSell: false,
         price: '$35',
         prevPrice: '$39',
         title: 'Polo',
@@ -28,6 +29,7 @@ export const DB = [
         reviews: 48
     },
     {
+        id: 1,
         category: 'man',
         featured: true,
         bestSell: true,
@@ -42,9 +44,10 @@ export const DB = [
         reviews: 30
     },
     {
+        id: 2,
         category: 'man',
         featured: true,
-        bestSell: false,
+        bestSell: true,
         price: '$50',
         prevPrice: '$51',
         title: 'Formals',
@@ -56,6 +59,7 @@ export const DB = [
         reviews: 61
     },
     {
+        id: 3,
         category: 'man',
         featured: false,
         bestSell: true,
@@ -70,6 +74,7 @@ export const DB = [
         reviews: 10
     },
     {
+        id: 4,
         category: 'woman',
         featured: false,
         bestSell: true,
@@ -84,6 +89,7 @@ export const DB = [
         reviews: 47
     },
     {
+        id: 5,
         category: 'woman',
         featured: true,
         bestSell: true,
@@ -98,6 +104,7 @@ export const DB = [
         reviews: 26
     },
     {
+        id: 6,
         category: 'woman',
         featured: true,
         bestSell: true,
@@ -112,6 +119,7 @@ export const DB = [
         reviews: 57
     },
     {
+        id: 7,
         category: 'woman',
         featured: true,
         bestSell: false,

@@ -6,8 +6,7 @@ import Signup from './components/routes/Signup';
 import Login from './components/routes/Login';
 import Welcome from './components/routes/Welcome';
 import Home from './components/routes/Home';
-import BestSell from './components/routes/BestSell';
-import Featured from './components/routes/Featured';
+import Category from './components/routes/Category';
 import ProductDetail from './components/routes/ProductDetail';
 
 const Stack = createStackNavigator();
@@ -21,8 +20,7 @@ const App = () => {
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='Signup' component={Signup} />
         <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='BestSell' component={BestSell} />
-        <Stack.Screen name='Featured' component={Featured} />
+        <Stack.Screen name='Category' component={Category} />
         <Stack.Screen name='ProductDetail' component={ProductDetail} />
       </Stack.Navigator>
     </NavigationContainer>

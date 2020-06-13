@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import AppInput from '../common/AppInput';
 import ImageCard from '../common/ImageCard';
 import Links from '../common/Links';
@@ -11,7 +11,7 @@ const Home = ({ navigation }) => {
     const [search, setSearch] = useState('');
 
     const handleClick = screen => () => {
-        navigation.navigate(screen);
+        navigation.navigate('Category', { screen });
     }
 
     return (
@@ -39,7 +39,7 @@ const Home = ({ navigation }) => {
             </ScrollView>
             <View style={s.header}>
                 <Text style={s.largeText}>Best Sell</Text>
-                <Links title='See all' onClick={handleClick('BestSell')} />
+                <Links title='See all' onClick={handleClick('Best Sell')} />
             </View>
             <ScrollView horizontal>
                 <ImageCard image={woman2} text='Black off shoulder' price='$50' index={5} navigation={navigation} />
