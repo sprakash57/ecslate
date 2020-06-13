@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Home = () => {
+const Featured = () => {
     return (
         <View>
-            <Text>Main listing page</Text>
+            <Text>Featured</Text>
         </View>
     )
 }
 
-export default Home;
+export default Featured;

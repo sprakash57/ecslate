@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
-import { WIDTH, HEIGHT, shop } from '../constants';
+import { WIDTH, HEIGHT, shop } from '../../constants';
 
 const Welcome = ({ navigation }) => {
 

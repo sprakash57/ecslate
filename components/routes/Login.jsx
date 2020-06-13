@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-import AppInput from './common/AppInput';
+import AppInput from '../common/AppInput';
 
 const Login = ({ navigation }) => {
 
