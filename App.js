@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Signup from './components/routes/Signup';
-import Login from './components/routes/Login';
+import Auth from './components/routes/Auth';
 import Welcome from './components/routes/Welcome';
 import Home from './components/routes/Home';
 import Category from './components/routes/Category';
@@ -16,12 +15,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Welcome' component={Welcome} />
-        <Stack.Screen name='Login' component={Login} />
-        <Stack.Screen name='Signup' component={Signup} />
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Category' component={Category} />
-        <Stack.Screen name='ProductDetail' component={ProductDetail} />
+        <Stack.Screen name='Welcome' component={Welcome} options={{ headerTitle: '' }} />
+        <Stack.Screen name='Auth' component={Auth} options={{ headerTitle: '' }} />
+        <Stack.Screen name='Home' component={Home} options={{ headerTitle: '' }} />
+        <Stack.Screen name='Category' component={Category} options={{ headerTitle: '' }} />
+        <Stack.Screen name='ProductDetail' component={ProductDetail} options={{ headerTitle: '' }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -5,7 +5,7 @@ import { WIDTH, HEIGHT, shop } from '../../constants';
 const Welcome = ({ navigation }) => {
 
     const handleNavigation = from => () => {
-        navigation.navigate(from)
+        navigation.navigate('Auth', { auth: from })
     }
 
     return (
@@ -19,7 +19,7 @@ const Welcome = ({ navigation }) => {
             </View>
             <View style={s.marginB}>
                 <Button title='Login' onPress={handleNavigation('Login')} />
-                <Button title='Signup' onPress={handleNavigation('Signup')} />
+                <Button title='SignUp' onPress={handleNavigation('SignUp')} />
             </View>
         </View>
     )
