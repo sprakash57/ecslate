@@ -23,6 +23,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "An E-Comm android app prototype made with expo and react native.",
+    "githubUrl": "https://github.com/sprakash57/bolt-store"
   }
 }
