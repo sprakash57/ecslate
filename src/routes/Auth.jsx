@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import AppInput from '../common/AppInput';
+import AppInput from '../components/AppInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Auth = ({ navigation, route }) => {

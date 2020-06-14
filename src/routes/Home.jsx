@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import AppInput from '../common/AppInput';
-import ImageCard from '../common/ImageCard';
-import Links from '../common/Links';
-import CategoryCard from '../common/CategoryCard';
+import AppInput from '../components/AppInput';
+import ImageCard from '../components/ImageCard';
+import Links from '../components/Links';
+import CategoryCard from '../components/CategoryCard';
 import { men1, men2, woman2, woman3, men4, woman4 } from '../../constants';
 
 const Home = ({ navigation }) => {

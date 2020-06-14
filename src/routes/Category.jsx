@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { DB, men1 } from '../../constants';
-import ImageCard from '../common/ImageCard';
+import ImageCard from '../components/ImageCard';
 
 const Category = ({ route, navigation }) => {
     const { screen } = route.params;

@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Auth from './components/routes/Auth';
-import Welcome from './components/routes/Welcome';
-import Home from './components/routes/Home';
-import Category from './components/routes/Category';
-import ProductDetail from './components/routes/ProductDetail';
+import Auth from './src/routes/Auth';
+import Welcome from './src/routes/Welcome';
+import Home from './src/routes/Home';
+import Category from './src/routes/Category';
+import ProductDetail from './src/routes/ProductDetail';
 
 const Stack = createStackNavigator();
 
