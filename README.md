@@ -1,25 +1,19 @@
-## bolt-store
-Bolt-store is am ecomm android app build for UI and navigation prototyping.  If you want to try out the demo, download the expo client from play store and scan the QR code present [here]([https://expo.io/@sprakash57/bolt-store](https://expo.io/@sprakash57/bolt-store)/)
+# ecslate
+
+## CLI Commands
+*   `npm install`: Installs dependencies
+
+*   `npm run dev`: Run a development, HMR server
+
+*   `npm run serve`: Run a production-like server
+
+*   `npm run build`: Production-ready build
+
+*   `npm run lint`: Pass TypeScript files using ESLint
+
+*   `npm run test`: Run Jest and Enzyme with
+    [`enzyme-adapter-preact-pure`](https://github.com/preactjs/enzyme-adapter-preact-pure) for
+    your tests
 
 
-## 📑 Available scripts
-
-Clone the repo and run below commands -
-
-### `npm install`
-  Installs all the dependency and libraries to run the application locally.
-
-### `expo start`
-
-Runs the app in the development mode.<br  />
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode to test sample test cases<br  />
-
-## 💻 Technology Stack
-
-- Rect Hooks
-- React Native
-- expo
-- React Navigation
+For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
