@@ -8,7 +8,7 @@ import Header from './header';
 
 const App: FunctionalComponent = () => {
     return (
-        <div id="app">
+        <main id="app">
             <Header />
             <Router>
                 <Route path="/" component={Home} />
@@ -16,7 +16,7 @@ const App: FunctionalComponent = () => {
                 <Route path="/profile/:user" component={Profile} />
                 <NotFoundPage default />
             </Router>
-        </div>
+        </main>
     );
 };
 
