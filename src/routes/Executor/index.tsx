@@ -1,14 +1,19 @@
+/* eslint-disable prefer-rest-params */
 import { FunctionalComponent, h } from 'preact';
 import { useRef } from 'preact/hooks';
 import style from './style.css';
 
-const Home: FunctionalComponent = () => {
+const Executor: FunctionalComponent = () => {
     const editor = useRef<HTMLTextAreaElement>();
     const output = useRef<HTMLDivElement>()
     const clearEditor = (): void => {
         editor.current.value = "";
     }
+    const clearOutput = (): void => {
+        output.current.innerHTML = "";
+    }
     const runEditor = (): void => {
+        clearOutput();
         (function (): void {
             function createLogNode(message: string): HTMLDivElement {
                 const node = document.createElement("div");
@@ -16,20 +21,15 @@ const Home: FunctionalComponent = () => {
                 node.appendChild(textNode);
                 return node;
             }
-            const baseLogFunction = console.log;
-            console.log = function () {
-                baseLogFunction.apply(console, arguments);
+            console.log = function (): void {
                 const args = Array.prototype.slice.call(arguments);
-                for (let i = 0; i < args.length; i++) {
-                    const node = createLogNode(args[i]);
+                args.forEach((arg) => {
+                    const node = createLogNode(arg);
                     output.current.appendChild(node);
-                }
-
+                })
             }
-
-            window.onerror = function (message, url, linenumber) {
-                console.log("JavaScript error: " + message + " on line " +
-                    linenumber + " for " + url);
+            window.onerror = function (message, _, lineno, colno): void {
+                console.log(`${message} on line ${lineno} and column ${colno}.`);
             };
         })();
         console.log(eval(editor.current.value));
@@ -44,12 +44,11 @@ const Home: FunctionalComponent = () => {
             </section>
             <section class={style.section}>
                 <h2>Output</h2>
-                <div ref={output}>Output</div>
-                <h2>Console</h2>
-                <textarea name="console" cols={60} rows={17} readonly />
+                <button onClick={clearOutput}>Clear</button>
+                <div ref={output} class={style.output}>{""}</div>
             </section>
         </main>
     );
 };
 
-export default Home;
+export default Executor;
