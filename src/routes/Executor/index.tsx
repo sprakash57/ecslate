@@ -32,6 +32,9 @@ const Executor: FunctionalComponent = () => {
                 console.log(`${message} on line ${lineno} and column ${colno}.`);
             };
         })();
+        /**
+         * Though its fine for now, but you might wanna check repl module
+         */
         console.log(eval(editor.current.value));
     }
     return (

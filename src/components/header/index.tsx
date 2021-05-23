@@ -11,7 +11,7 @@ const Header: FunctionalComponent = () => {
                     Execute
                 </Link>
                 <Link activeClassName={style.active} href="/profile">
-                    Me
+                    Compare
                 </Link>
                 <Link activeClassName={style.active} href="/profile/john">
                     John

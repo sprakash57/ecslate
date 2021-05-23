@@ -2,9 +2,9 @@ import { FunctionalComponent, h } from 'preact';
 import { Route, Router } from 'preact-router';
 
 import Executor from '../routes/Executor';
-import Profile from '../routes/profile';
 import NotFoundPage from '../routes/notfound';
 import Header from './header';
+import Compare from '../routes/Compare';
 
 const App: FunctionalComponent = () => {
     return (
@@ -12,8 +12,7 @@ const App: FunctionalComponent = () => {
             <Header />
             <Router>
                 <Route path="/" component={Executor} />
-                <Route path="/profile/" component={Profile} user="me" />
-                <Route path="/profile/:user" component={Profile} />
+                <Route path="/profile/" component={Compare} />
                 <NotFoundPage default />
             </Router>
         </main>
