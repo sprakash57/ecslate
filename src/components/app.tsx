@@ -5,6 +5,7 @@ import Executor from '../routes/Executor';
 import NotFoundPage from '../routes/notfound';
 import Header from './header';
 import Compare from '../routes/Compare';
+import Beautifier from '../routes/Beautifier';
 
 const App: FunctionalComponent = () => {
     return (
@@ -12,7 +13,8 @@ const App: FunctionalComponent = () => {
             <Header />
             <Router>
                 <Route path="/" component={Executor} />
-                <Route path="/profile/" component={Compare} />
+                <Route path="/compare" component={Compare} />
+                <Route path="/beautify" component={Beautifier} />
                 <NotFoundPage default />
             </Router>
         </main>
