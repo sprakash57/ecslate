@@ -16,6 +16,9 @@ const Header: FunctionalComponent = () => {
                 <Link activeClassName={style.active} href="/beautify">
                     Beautify
                 </Link>
+                <Link activeClassName={style.active} href="/convert">
+                    Convert
+                </Link>
             </nav>
         </header>
     );
