@@ -9,7 +9,7 @@ const Beautifier: FunctionalComponent = () => {
     const inputType = useRef<HTMLSelectElement>();
 
     const clearEditor = (): void => {
-        editor.current.value = "";
+        editor.current.value = '';
     }
 
     const getStrAsFormat = (): string => {
@@ -61,4 +61,3 @@ const Beautifier: FunctionalComponent = () => {
 }
 
 export default Beautifier;
-

@@ -2,7 +2,6 @@ import { FunctionalComponent, h } from 'preact';
 import { Route, Router } from 'preact-router';
 
 import Executor from '../routes/Executor';
-import Convert from '../routes/Convert';
 import Header from './header';
 import Compare from '../routes/Compare';
 import Beautifier from '../routes/Beautifier';
@@ -15,7 +14,6 @@ const App: FunctionalComponent = () => {
                 <Route path="/" component={Executor} />
                 <Route path="/compare" component={Compare} />
                 <Route path="/beautify" component={Beautifier} />
-                <Route path="/convert" component={Convert} />
             </Router>
         </main>
     );
