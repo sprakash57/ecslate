@@ -1,3 +1,24 @@
-> A minimal template for building Electron + Svelte app.
+# ecslate
 
-Read more in details: https://dev.to/khangnd/build-a-desktop-app-with-electron-and-svelte-44dp
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
