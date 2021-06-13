@@ -54,7 +54,6 @@ export default defineComponent({
     const selectInputType = (e: Event) => {
       const target = <HTMLSelectElement>e.target;
       selectedOption = target.value;
-      console.log(selectedOption);
     };
 
     const clearEditor = () => {
