@@ -33,7 +33,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "typescript": "~4.1.5",
-    "vue-cli-plugin-electron-builder": "~2.0.0"
+    "vue-cli-plugin-electron-builder": "~2.0.0",
+    "yaml": "^1.10.2"
   },
   "eslintConfig": {
     "root": true,
@@ -46,7 +47,10 @@
       "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "@typescript-eslint/parser"
+      "parser": "@typescript-eslint/parser",
+      "ecmaFeatures": {
+        "jsx": false
+      }
     },
     "rules": {}
   },
