@@ -19,6 +19,11 @@ const routes = [
     path: '/compare',
     name: 'Comparator',
     component: () => import('../views/Comparator.vue')
+  },
+  {
+    path: '/execute',
+    name: 'Execute',
+    component: () => import('../views/Execute.vue')
   }
 ]
 

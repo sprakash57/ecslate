@@ -2,7 +2,8 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/beautifier">Beautify</router-link> |
-    <router-link to="/compare">Compare</router-link>
+    <router-link to="/compare">Compare</router-link> |
+    <router-link to="/execute">Execute</router-link>
   </div>
   <router-view />
 </template>
