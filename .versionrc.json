@@ -10,27 +10,15 @@
         },
         {
             "type": "chore",
-            "hidden": true
+            "section": "HouseKeeping"
         },
         {
             "type": "docs",
             "section": "Documentation"
         },
         {
-            "type": "style",
-            "hidden": true
-        },
-        {
             "type": "refactor",
-            "hidden": true
-        },
-        {
-            "type": "perf",
-            "hidden": true
-        },
-        {
-            "type": "test",
-            "hidden": true
+            "section": "Internal"
         }
     ],
     "commitUrlFormat": "https://github.com/sprakash57/ecslate/commits/{{hash}}",
