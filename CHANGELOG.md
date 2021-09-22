@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/sprakash57/ecslate/compare/v0.1.0...v0.2.1) (2021-09-22)
+
+
+### Features
+
+* App route system ([#10](https://github.com/sprakash57/ecslate/issues/10)) ([e05e2a9](https://github.com/sprakash57/ecslate/commits/e05e2a97573608e3ec4b04f63f5da55751e44e79))
+
 ## 0.1.0 (2021-07-04)
 
 
