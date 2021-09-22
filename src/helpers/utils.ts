@@ -1,0 +1,1 @@
+export const classes = (...args: any[]) => args.filter(arg => !!arg).join(" ");
