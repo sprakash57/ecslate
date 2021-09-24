@@ -1,5 +1,5 @@
 :root {
-  --gray: hsl(210, 29%, 29%);
+  --gray: hsl(210, 28%, 29%);
   --green100: hsl(153, 47%, 53%);
   --green200: hsl(153, 48%, 49%);
 }
@@ -30,4 +30,13 @@ a {
 }
 * {
     box-sizing: border-box;
+}
+.darkBg {
+  box-shadow: inset 4px 4px 8px hsl(153, 10%, 9%),
+    1px 1px 4px hsl(153, 76%, 93%);
+  border-radius: 15px;
+  background: var(--gray);
+  border: none;
+  padding: 0.8rem;
+  color: white;
 }

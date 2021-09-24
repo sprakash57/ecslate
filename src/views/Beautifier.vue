@@ -1,59 +1,59 @@
 <template>
   <main class="container">
-    <section class="section">
-      <h2>Editor</h2>
-      <button @click="runBeautifier">Run</button>
-      <button @click="clearEditor">Clear</button>
-      <select id="inputType" @change="selectInputType">
-        <option selected value="json">JSON</option>
-        <option value="yaml">YAML</option>
-      </select>
-      <textarea v-model="editor" name="editor" cols="60" rows="38" />
+    <section style="margin-top: 1rem">
+      <Dropdown
+        :options="options"
+        :onClick="selectInputType"
+        default="JSON"
+        title="Select format"
+      />
     </section>
-    <section class="section">
-      <h2>Output</h2>
-      <div ref="output" class="output"></div>
+    <section class="fields">
+      <div class="fields__io">
+        <textarea
+          v-model="editor"
+          name="editor"
+          cols="60"
+          rows="38"
+          class="darkBg fields__io__editor"
+        />
+      </div>
+      <div class="fields__btn">
+        <Button :onClick="runBeautifier" title="Beautify">
+          <img src="@/assets/icon/swap.svg" alt="Beautify" />
+        </Button>
+        <Button :onClick="clearEditor" title="Reset">
+          <img src="@/assets/icon/reset.svg" alt="Reset" />
+        </Button>
+      </div>
+      <div class="fields__io">
+        <div ref="output" class="darkBg field__io__output" />
+      </div>
     </section>
   </main>
 </template>
 
-<style scoped>
-.container {
-  display: flex;
-  justify-content: center;
-}
-.section {
-  width: 50%;
-  padding: 0.5rem;
-}
-textarea {
-  resize: none;
-  width: 100%;
-}
-.output {
-  width: 100%;
-  background: white;
-  height: 86%;
-  outline: auto;
-  max-height: 77vh;
-  overflow-y: auto;
-}
-</style>
-
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Button from "@/components/common/Button.vue";
+import Dropdown from "@/components/common/Dropdown.vue";
 import YAML from "yaml";
 
 export default defineComponent({
   name: "Beautifier",
+  components: {
+    Button,
+    Dropdown,
+  },
   setup() {
+    const options = ["JSON", "YAML"];
     const editor = ref("");
     const output = ref();
     let selectedOption: string = "json";
 
-    const selectInputType = (e: Event) => {
-      const target = <HTMLSelectElement>e.target;
-      selectedOption = target.value;
+    const selectInputType = (option: string) => {
+      console.log(option);
+      selectedOption = option;
     };
 
     const clearEditor = () => {
@@ -90,7 +90,46 @@ export default defineComponent({
       selectInputType,
       clearEditor,
       runBeautifier,
+      options,
     };
   },
 });
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fields {
+  display: flex;
+  width: 90%;
+  min-width: 900px;
+}
+.fields__io__editor {
+  resize: none;
+  width: 100%;
+}
+.fields__io {
+  width: 100%;
+}
+.fields__btn {
+  display: flex;
+  flex-direction: column;
+  margin: auto 2rem;
+}
+.fields__btn button {
+  border-radius: 20%;
+  padding: 0.25rem;
+}
+.fields__btn img {
+  vertical-align: middle;
+}
+.field__io__output {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+</style>

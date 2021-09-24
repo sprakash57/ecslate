@@ -28,7 +28,7 @@
   background: none;
   padding: 0.8rem;
   margin: 0.5rem;
-  box-shadow: 3px 3px 4px hsl(210, 28%, 18%), -3px -2px 4px hsl(210, 9%, 36%);
+  box-shadow: 3px 3px 4px hsl(210, 28%, 21%), -3px -2px 4px hsl(210, 18%, 33%);
   border-radius: 1rem;
   color: white;
   min-width: 60px;
