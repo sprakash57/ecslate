@@ -1,12 +1,7 @@
 <template>
   <main class="container">
-    <section style="margin-top: 1rem">
-      <Dropdown
-        :options="options"
-        :onClick="selectInputType"
-        default="JSON"
-        title="Select format"
-      />
+    <section style="margin: 1rem">
+      <Dropdown :options="options" :onClick="selectInputType" default="JSON" />
     </section>
     <section class="fields">
       <div class="fields__io">
@@ -52,12 +47,12 @@ export default defineComponent({
     let selectedOption: string = "json";
 
     const selectInputType = (option: string) => {
-      console.log(option);
       selectedOption = option;
     };
 
     const clearEditor = () => {
       editor.value = "";
+      output.value = "";
     };
 
     const getStrAsInputType = () => {
@@ -118,7 +113,7 @@ export default defineComponent({
 .fields__btn {
   display: flex;
   flex-direction: column;
-  margin: auto 2rem;
+  margin: auto 3rem;
 }
 .fields__btn button {
   border-radius: 20%;

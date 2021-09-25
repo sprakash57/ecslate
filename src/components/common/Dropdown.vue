@@ -1,37 +1,41 @@
 <template>
-  <div class="dropdown" :tabindex="tabindex" @blur="open = hasOpen">
-    <div class="selected" @click="open = !open">
-      {{ selected }}
-    </div>
-    <div class="items" :class="{ selectHide: !open }">
-      <div
-        v-for="option of options"
-        :key="option"
-        @click="
-          selected = option;
-          open = hasOpen;
-          onClick(option);
-        "
-      >
-        {{ option }}
+  <div class="dropdown">
+    <label class="dropdown__label" for="selector">{{ label }}</label>
+    <div
+      id="selector"
+      class="selector"
+      :tabindex="tabindex"
+      @blur="open = hasOpen"
+    >
+      <div class="selected" @click="open = !open">
+        {{ selected }}
+      </div>
+      <div class="items" :class="{ selectHide: !open }">
+        <div
+          v-for="option of options"
+          :key="option"
+          @click="handleClick(option)"
+        >
+          {{ option }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
   props: {
-    onClick: Function,
+    onClick: { type: Function, required: true },
+    label: String,
     hasOpen: { type: Boolean, default: false },
-    options: {
-      type: Array,
-      required: true,
-    },
+    options: { type: Array, required: true },
     default: {
       type: String,
       required: false,
-      default: null,
+      default: "",
     },
     tabindex: {
       type: Number,
@@ -39,21 +43,35 @@ export default {
       default: 0,
     },
   },
-  data() {
+  setup(props) {
+    const selected = ref(props.default || props.options?.[0]);
+    const open = ref(false);
+    const handleClick = (option: string) => {
+      selected.value = option;
+      open.value = props.hasOpen;
+      props.onClick(option);
+    };
     return {
-      selected: this.default
-        ? this.default
-        : this.options.length > 0
-        ? this.options[0]
-        : null,
-      open: false,
+      selected,
+      open,
+      handleClick,
     };
   },
-};
+});
 </script>
 
 <style scoped>
 .dropdown {
+  display: flex;
+  align-items: center;
+}
+.dropdown__label {
+  margin-right: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.selector {
   position: relative;
   min-width: 90px;
   line-height: 45px;
@@ -66,15 +84,15 @@ export default {
   color: white;
   cursor: pointer;
 }
-.dropdown .selected {
+.selector .selected {
   padding-left: 0.5rem;
 }
-.dropdown::after {
+.selector::after {
   box-shadow: inset 3px 3px 4px hsl(153, 51%, 38%),
     4px 4px 4px hsl(153, 45%, 63%);
 }
 
-.dropdown .selected:after {
+.selector .selected:after {
   position: absolute;
   content: "";
   top: 20px;
@@ -82,7 +100,7 @@ export default {
   border: 5px solid transparent;
   border-color: #fff transparent transparent transparent;
 }
-.dropdown .items {
+.selector .items {
   color: #fff;
   border-radius: 1rem;
   overflow: hidden;
@@ -93,20 +111,19 @@ export default {
   right: 0;
   z-index: 1;
 }
-.dropdown .items div {
+.selector .items div {
   color: #fff;
   padding: 0 0.5rem;
   cursor: pointer;
   user-select: none;
 }
-.dropdown .items div:not(:last-child) {
+.selector .items div:not(:last-child) {
   border-bottom: 1px solid white;
 }
-.dropdown .items div:hover {
+.selector .items div:hover {
   background-color: var(--gray);
   transition: background-color 0.3s ease-in-out;
 }
-
 .selectHide {
   display: none;
 }
