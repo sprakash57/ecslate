@@ -1,6 +1,8 @@
 <template>
   <div class="dropdown">
-    <label class="dropdown__label" for="selector">{{ label }}</label>
+    <label v-if="label" class="dropdown__label" for="selector">{{
+      label
+    }}</label>
     <div
       id="selector"
       class="selector"

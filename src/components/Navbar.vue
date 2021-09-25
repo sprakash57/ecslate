@@ -36,5 +36,6 @@
 .links a.router-link-exact-active {
   box-shadow: inset 3px 3px 4px hsl(210, 28%, 18%),
     4px 4px 4px hsl(210, 17%, 33%);
+  color: var(--green100);
 }
 </style>

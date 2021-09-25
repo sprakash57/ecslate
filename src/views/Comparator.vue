@@ -1,25 +1,37 @@
 <template>
   <main class="container">
-    <section class="rows">
-      <div class="column">
-        <h2>Editor 1</h2>
-        <button @click="runCompare">Compare</button>
-        <button @click="resetFields">Reset</button>
-        <select name="inputType" @change="selectInputType">
-          <option selected value="text">Text</option>
-          <option value="object">Object</option>
-        </select>
-        <textarea v-model="editor1" name="editor" cols="60" rows="38" />
+    <section class="fields">
+      <div class="fields__input">
+        <textarea
+          v-model="compareTo"
+          cols="60"
+          rows="19"
+          class="darkBg fields__input__editor"
+          placeholder="Compare to..."
+        />
+        <textarea
+          v-model="compareFrom"
+          class="darkBg fields__input__editor"
+          cols="60"
+          rows="19"
+          placeholder="Compare from..."
+        />
       </div>
-      <div class="column">
-        <h2>Editor 2</h2>
-        <textarea v-model="editor2" name="output" cols="60" rows="38" />
+      <div class="fields__btn">
+        <Button :onClick="runCompare" title="Compare">
+          <img src="@/assets/icon/compare.svg" alt="Compare" />
+        </Button>
+        <Button :onClick="resetFields" title="Reset">
+          <img src="@/assets/icon/reset.svg" alt="Reset" />
+        </Button>
+        <Dropdown
+          :options="['Text', 'Object']"
+          :default="Text"
+          :onClick="selectInputType"
+        />
       </div>
-    </section>
-    <section class="rows">
-      <div class="column">
-        <h2>Output</h2>
-        <pre ref="output"></pre>
+      <div class="fields__output">
+        <pre ref="output" class="darkBg" />
       </div>
     </section>
   </main>
@@ -30,45 +42,70 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }
-.column {
-  width: 50%;
-  padding: 0.5rem;
+.fields {
+  display: flex;
+  width: 90%;
+  min-width: 900px;
 }
-textarea {
+.fields__input {
+  width: 100%;
+  height: 100%;
+}
+.fields__input__editor {
   resize: none;
   width: 100%;
 }
-.rows {
+.fields__btn {
+  margin: 0 2rem;
+  height: 200px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.output {
+.fields__btn button {
+  padding: 0.4rem;
   width: 100%;
-  background: white;
-  height: 86%;
-  outline: auto;
-  max-height: 77vh;
+  margin: 0;
+}
+.fields__btn img {
+  vertical-align: middle;
+}
+.fields__output {
+  width: 100%;
+  display: flex;
   overflow-y: auto;
+}
+.fields__output pre {
+  margin: 0;
+  width: 100%;
 }
 </style>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Button from "@/components/common/Button.vue";
+import Dropdown from "@/components/common/Dropdown.vue";
+
 const Diff = require("diff");
 
 export default defineComponent({
-  name: "Comparator",
+  components: {
+    Button,
+    Dropdown,
+  },
   setup() {
     const output = ref();
-    const editor1 = ref("");
-    const editor2 = ref("");
+    const compareTo = ref("");
+    const compareFrom = ref("");
     let selectedOption = "text";
 
     const resetFields = () => {
       (<HTMLDivElement>output.value).innerHTML = "";
-      editor1.value = "";
-      editor2.value = "";
+      compareTo.value = "";
+      compareFrom.value = "";
     };
 
     const selectInputType = (e: Event) => {
@@ -82,9 +119,9 @@ export default defineComponent({
       const fragment = document.createDocumentFragment();
 
       if (selectedOption === "object") {
-        diff = Diff.diffLines(editor1.value, editor2.value);
+        diff = Diff.diffLines(compareTo.value, compareFrom.value);
       } else {
-        diff = Diff.diffChars(editor1.value, editor2.value);
+        diff = Diff.diffChars(compareTo.value, compareFrom.value);
       }
 
       diff.forEach((part: Record<string, any>) => {
@@ -103,8 +140,8 @@ export default defineComponent({
 
     return {
       output,
-      editor1,
-      editor2,
+      compareTo,
+      compareFrom,
       selectInputType,
       resetFields,
       runCompare,
