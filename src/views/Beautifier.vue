@@ -11,6 +11,7 @@
           cols="60"
           rows="38"
           class="darkBg fields__io__editor"
+          placeholder="Type ugly..."
         />
       </div>
       <div class="fields__btn">
@@ -41,10 +42,10 @@ export default defineComponent({
     Dropdown,
   },
   setup() {
-    const options = ["JSON", "YAML"];
     const editor = ref("");
     const output = ref();
-    let selectedOption: string = "json";
+    const options = ["JSON", "YAML"];
+    let selectedOption: string = "JSON";
 
     const selectInputType = (option: string) => {
       selectedOption = option;
@@ -52,12 +53,12 @@ export default defineComponent({
 
     const clearEditor = () => {
       editor.value = "";
-      output.value = "";
+      (<HTMLDivElement>output.value).innerHTML = "";
     };
 
     const getStrAsInputType = () => {
       switch (selectedOption) {
-        case "yaml": {
+        case "YAML": {
           const inputAsYaml = YAML.parse(editor.value);
           return YAML.stringify(inputAsYaml);
         }
