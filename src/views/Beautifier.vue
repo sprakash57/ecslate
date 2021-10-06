@@ -1,8 +1,5 @@
 <template>
   <main class="container">
-    <section style="margin: 1rem">
-      <Dropdown :options="options" :onClick="selectInputType" default="JSON" />
-    </section>
     <section class="fields">
       <div class="fields__io">
         <textarea
@@ -21,13 +18,57 @@
         <Button :onClick="clearEditor" title="Reset">
           <img src="@/assets/icon/reset.svg" alt="Reset" />
         </Button>
+        <Dropdown :options="options" :onClick="selectInputType" default="JSON" />
       </div>
       <div class="fields__io">
-        <div ref="output" class="darkBg field__io__output" />
+        <div ref="output" class="darkBg fields__io__output" />
       </div>
     </section>
   </main>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.fields {
+  display: flex;
+  width: 90%;
+  min-width: 900px;
+}
+.fields__io {
+  width: 100%;
+}
+.fields__io__editor {
+  resize: none;
+  width: 100%;
+}
+.fields__btn {
+  margin: 0 2rem;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.fields__btn button {
+  padding: 0.4rem;
+  width: 100%;
+}
+.fields__btn > * {
+  margin: 0.5rem 0;
+}
+.fields__btn img {
+  vertical-align: middle;
+}
+.fields__io__output {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+</style>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
@@ -91,41 +132,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.fields {
-  display: flex;
-  width: 90%;
-  min-width: 900px;
-}
-.fields__io__editor {
-  resize: none;
-  width: 100%;
-}
-.fields__io {
-  width: 100%;
-}
-.fields__btn {
-  display: flex;
-  flex-direction: column;
-  margin: auto 3rem;
-}
-.fields__btn button {
-  border-radius: 20%;
-  padding: 0.25rem;
-}
-.fields__btn img {
-  vertical-align: middle;
-}
-.field__io__output {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
-</style>

@@ -63,15 +63,16 @@
   height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 .fields__btn button {
   padding: 0.4rem;
   width: 100%;
-  margin: 0;
 }
 .fields__btn img {
   vertical-align: middle;
+}
+.fields__btn > * {
+  margin: 0.5rem 0;
 }
 .fields__output {
   width: 100%;
