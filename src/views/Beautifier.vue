@@ -98,7 +98,7 @@ export default defineComponent({
     };
 
     const getStrAsInputType = () => {
-      switch (selectedOption) {
+        switch (selectedOption) {
         case "YAML": {
           const inputAsYaml = YAML.parse(editor.value);
           return YAML.stringify(inputAsYaml);
@@ -116,7 +116,7 @@ export default defineComponent({
         const preEl = document.createElement("pre");
         preEl.innerHTML = getStrAsInputType();
         (<HTMLDivElement>output.value).appendChild(preEl);
-      } catch (error) {
+      } catch (error: any) {
         (<HTMLDivElement>output.value).innerHTML = error.message;
       }
     };
