@@ -46,6 +46,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    console.log(props.label)
     const selected = ref(props.default || props.options?.[0]);
     const open = ref(false);
     const handleClick = (option: string) => {
@@ -55,6 +56,7 @@ export default defineComponent({
     };
     return {
       selected,
+      label: props.label,
       open,
       handleClick,
     };

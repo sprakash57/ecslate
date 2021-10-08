@@ -4,14 +4,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, onMounted } from "vue";
 import Navbar from "@/components/Navbar.vue";
+import store from "./store";
 
 export default defineComponent({
-  name: "App",
   components: {
     Navbar,
   },
+  setup(){
+    onBeforeMount(() => {
+      const font = store.read("font");
+      document.body.style.fontFamily = String(font);
+    })
+  }
 });
 </script>
 

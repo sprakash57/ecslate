@@ -2,14 +2,7 @@
   <main class="container">
     <section class="fields">
       <div class="fields__io">
-        <textarea
-          v-model="editor"
-          name="editor"
-          cols="60"
-          rows="38"
-          class="darkBg fields__io__editor"
-          placeholder="Type ugly..."
-        />
+        <TextArea v-model="editor" placeholder="Type ugly..."/>
       </div>
       <div class="fields__btn">
         <Button :onClick="runBeautifier" title="Beautify">
@@ -43,10 +36,6 @@
 .fields__io {
   width: 100%;
 }
-.fields__io__editor {
-  resize: none;
-  width: 100%;
-}
 .fields__btn {
   margin: 0 2rem;
   height: 200px;
@@ -74,6 +63,7 @@
 import { defineComponent, ref } from "vue";
 import Button from "@/components/common/Button.vue";
 import Dropdown from "@/components/common/Dropdown.vue";
+import TextArea from '@/components/common/TextArea.vue';
 import YAML from "yaml";
 
 export default defineComponent({
@@ -81,6 +71,7 @@ export default defineComponent({
   components: {
     Button,
     Dropdown,
+    TextArea
   },
   setup() {
     const editor = ref("");
@@ -127,7 +118,7 @@ export default defineComponent({
       selectInputType,
       clearEditor,
       runBeautifier,
-      options,
+      options
     };
   },
 });

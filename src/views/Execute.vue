@@ -2,14 +2,7 @@
   <main class="container">
     <section class="fields">
       <div class="fields__io">
-        <textarea
-          v-model="editor"
-          name="editor"
-          cols="60"
-          rows="38"
-          class="darkBg fields__io__editor"
-          placeholder="JavaScript snippet..."
-        />
+        <TextArea v-model="editor" placeholder="JavaScript snippet..."/>
       </div>
       <div class="fields__btn">
         <Button :onClick="runEditor" title="Execute">
@@ -42,10 +35,6 @@
 .fields__io {
   width: 100%;
 }
-.fields__io__editor {
-  resize: none;
-  width: 100%;
-}
 .fields__btn {
   margin: 0 2rem;
   height: 200px;
@@ -72,11 +61,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Button from '@/components/common/Button.vue';
+import { Button, TextArea } from '@/components/common';
 
 export default defineComponent({
   components: {
-    Button
+    Button,
+    TextArea
   },
   setup() {
     const editor = ref("");

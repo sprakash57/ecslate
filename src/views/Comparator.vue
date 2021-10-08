@@ -2,20 +2,8 @@
   <main class="container">
     <section class="fields">
       <div class="fields__input">
-        <textarea
-          v-model="compareTo"
-          cols="60"
-          rows="19"
-          class="darkBg fields__input__editor"
-          placeholder="Compare to..."
-        />
-        <textarea
-          v-model="compareFrom"
-          class="darkBg fields__input__editor"
-          cols="60"
-          rows="19"
-          placeholder="Compare from..."
-        />
+        <TextArea v-model="compareTo" rows="19" placeholder="Compare to..."/>
+        <TextArea v-model="compareFrom" rows="19" placeholder="Compare From..."/>
       </div>
       <div class="fields__btn">
         <Button :onClick="runCompare" title="Compare">
@@ -54,10 +42,6 @@
   width: 100%;
   height: 100%;
 }
-.fields__input__editor {
-  resize: none;
-  width: 100%;
-}
 .fields__btn {
   margin: 0 2rem;
   height: 200px;
@@ -89,6 +73,7 @@
 import { defineComponent, ref } from "vue";
 import Button from "@/components/common/Button.vue";
 import Dropdown from "@/components/common/Dropdown.vue";
+import TextArea from '@/components/common/TextArea.vue';
 
 const Diff = require("diff");
 
@@ -96,6 +81,7 @@ export default defineComponent({
   components: {
     Button,
     Dropdown,
+    TextArea
   },
   setup() {
     const output = ref();
