@@ -3,19 +3,16 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
-    name: 'Beautifier',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Beautifier.vue')
+    name: 'Beautify',
+    component: () => import('@/views/Beautify.vue')
   },
   {
-    path: '/compare',
-    name: 'Comparator',
-    component: () => import('@/views/Comparator.vue')
+    path: '/Compare',
+    name: 'Compare',
+    component: () => import('@/views/Compare.vue')
   },
   {
-    path: '/execute',
+    path: '/Execute',
     name: 'Execute',
     component: () => import('@/views/Execute.vue')
   },

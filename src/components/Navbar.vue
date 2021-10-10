@@ -1,9 +1,13 @@
 <template>
   <nav class="nav">
     <section class="links">
-      <router-link to="/">Beautify</router-link>
-      <router-link to="/compare">Compare</router-link>
-      <router-link to="/execute">Execute</router-link>
+      <router-link 
+      v-for="route in routes"
+      :key="route.name" 
+      :to="route.path"
+      >
+      {{ route.name }}
+      </router-link>
     </section>
     <section class="links">
       <router-link to="/about">About</router-link>
@@ -39,3 +43,24 @@
   color: var(--green100);
 }
 </style>
+
+<script lang="ts">
+import { ROUTES } from "@/helpers/constants";
+import store from "@/store";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  setup() {
+    // const slateInSettings = store.read("defaultSlate");
+    // const routes = ROUTES.map(route => {
+    //   if (route.name === slateInSettings) {
+    //     return { path: '/', name: route.name }
+    //   }
+    //   return route;
+    // });
+    return {
+      routes: ROUTES
+    };
+  },
+});
+</script>

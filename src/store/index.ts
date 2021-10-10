@@ -1,12 +1,10 @@
-type DefaultSettings = { [key: string]: string | boolean };
-
 const DEFAULT = {
     "disableWelcomePage": true,
     "defaultSlate": "Beautify",
     "font": "monospace"
 }
 
-const fetchSettings = (): DefaultSettings => {
+const fetchSettings = (): Record<string, any> => {
     try {
         const settings = window.localStorage.getItem("settings");
         if (settings) return JSON.parse(settings);
