@@ -1,39 +1,36 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/',
-    name: 'Beautifier',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Beautifier.vue')
+    path: "/",
+    name: "Beautify",
+    component: () => import("@/views/Beautify.vue"),
   },
   {
-    path: '/compare',
-    name: 'Comparator',
-    component: () => import('@/views/Comparator.vue')
+    path: "/Compare",
+    name: "Compare",
+    component: () => import("@/views/Compare.vue"),
   },
   {
-    path: '/execute',
-    name: 'Execute',
-    component: () => import('@/views/Execute.vue')
+    path: "/Execute",
+    name: "Execute",
+    component: () => import("@/views/Execute.vue"),
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('@/views/About.vue')
+    path: "/About",
+    name: "About",
+    component: () => import("@/views/About.vue"),
   },
   {
-    path: '/settings',
-    name: 'Settings',
-    component: () => import('@/views/Settings.vue')
-  }
-]
+    path: "/Settings",
+    name: "Settings",
+    component: () => import("@/views/Settings.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
 export default router;
