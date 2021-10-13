@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { classes } from "@/helpers/utils";
-import store from "@/store";
+import { useStore } from 'vuex';
 import { defineComponent } from "@vue/runtime-core"
 
 export default defineComponent({
@@ -30,18 +30,18 @@ export default defineComponent({
         class: { type: String, required: false }
     },
     emits: ["update:modelValue"],
-    setup(props, context){
-        const customStyle = {'font-family': store.read("font")};
+    setup(props, { emit }){
+        const store = useStore();
         const handleInput = (e: Event) => {
             const target = <HTMLInputElement>e.target;
-            context.emit("update:modelValue", target.value);
+            emit("update:modelValue", target.value);
         }
         return {
             cols: props.cols,
             rows: props.rows,
             classes: classes("darkBg editor", props.class),
             handleInput,
-            customStyle
+            customStyle: {'font-family': store.getters.readSetting("font")}
         }
     }
 });

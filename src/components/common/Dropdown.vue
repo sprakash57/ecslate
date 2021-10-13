@@ -6,13 +6,14 @@
     <div
       id="selector"
       class="selector"
+      :style="selectorStyle"
       :tabindex="tabindex"
       @blur="open = hasOpen"
     >
       <div class="selected" @click="open = !open">
         {{ selected }}
       </div>
-      <div class="items" :class="{ selectHide: !open }">
+      <div class="items" :class="{ selectHide: !open }" :style="dropdownStyle">
         <div
           v-for="option of options"
           :key="option"
@@ -44,6 +45,9 @@ export default defineComponent({
       required: false,
       default: 0,
     },
+    width: { type: String, default: "90px" },
+    selectorStyle: { type: Object, required: false },
+    dropdownStyle: { type: Object, required: false },
   },
   setup(props) {
     const selected = ref(props.default || props.options?.[0]);
@@ -58,6 +62,9 @@ export default defineComponent({
       label: props.label,
       open,
       handleClick,
+      width: { width: props.width },
+      selectorStyle: props.selectorStyle,
+      dropdownStyle: props.dropdownStyle,
     };
   },
 });
@@ -94,7 +101,6 @@ export default defineComponent({
   box-shadow: inset 3px 3px 4px hsl(153, 51%, 38%),
     4px 4px 4px hsl(153, 45%, 63%);
 }
-
 .selector .selected:after {
   position: absolute;
   content: "";

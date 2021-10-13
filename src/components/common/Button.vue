@@ -11,11 +11,11 @@ import { classes } from "@/helpers/utils";
 export default defineComponent({
   props: {
     onClick: Function,
-    className: { type: String, required: false },
+    class: { type: String, required: false },
   },
   setup(props) {
     return {
-      classes: classes("btn", props.className),
+      classes: classes("btn", props.class),
     };
   },
 });
