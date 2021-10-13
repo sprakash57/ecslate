@@ -5,3 +5,8 @@ export const ROUTES = [
 ];
 
 export const FONTS = ['monospace', 'serif']
+
+export const SETTINGS = {
+    hasWelcomePage: false,
+    font: "monospace"
+}

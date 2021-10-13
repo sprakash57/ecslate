@@ -1,12 +1,8 @@
 <template>
   <nav class="nav">
     <section class="links">
-      <router-link 
-      v-for="route in routes"
-      :key="route.name" 
-      :to="route.path"
-      >
-      {{ route.name }}
+      <router-link v-for="route in routes" :key="route.name" :to="route.path">
+        {{ route.name }}
       </router-link>
     </section>
     <section class="links">
@@ -46,20 +42,12 @@
 
 <script lang="ts">
 import { ROUTES } from "@/helpers/constants";
-import store from "@/store";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   setup() {
-    // const slateInSettings = store.read("defaultSlate");
-    // const routes = ROUTES.map(route => {
-    //   if (route.name === slateInSettings) {
-    //     return { path: '/', name: route.name }
-    //   }
-    //   return route;
-    // });
     return {
-      routes: ROUTES
+      routes: ROUTES,
     };
   },
 });
