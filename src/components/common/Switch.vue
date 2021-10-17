@@ -1,13 +1,8 @@
 <template>
-    <label class="switch" for="switch">
-        <input 
-            type="checkbox" 
-            id="switch"
-            @change="onChange" 
-            :checked="checked"
-        >
-        <span class="slider" />
-    </label>
+  <label class="switch" for="switch">
+    <input type="checkbox" id="switch" @change="onChange" :checked="checked" />
+    <span class="slider" />
+  </label>
 </template>
 
 <style scoped>
@@ -17,7 +12,7 @@
   width: 37px;
   height: 21px;
 }
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -32,19 +27,19 @@
   bottom: 0;
   border-radius: 20px;
   background-color: #ccc;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 .slider:before {
-    position: absolute;
-    content: "";
-    top: 3px;
-    left: 3px;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    background-color: var(--gray);
-    transition: .3s;
+  position: absolute;
+  content: "";
+  top: 3px;
+  left: 3px;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: var(--gray);
+  transition: 0.3s;
 }
 input:checked + .slider {
   background-color: var(--green100);
@@ -61,17 +56,12 @@ input:checked + .slider:before {
 </style>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-    props: {
-        onChange: Function,
-        checked: Boolean
-    },
-    setup(props) {
-        return {
-            checked: props.checked
-        }
-    },
-})
+  props: {
+    onChange: Function,
+    checked: Boolean,
+  },
+});
 </script>

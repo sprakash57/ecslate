@@ -11,7 +11,7 @@
       @blur="open = hasOpen"
     >
       <div class="selected" @click="open = !open">
-        {{ selected }}
+        {{ selectedValue || options[0] }}
       </div>
       <div class="items" :class="{ selectHide: !open }" :style="dropdownStyle">
         <div
@@ -35,7 +35,8 @@ export default defineComponent({
     label: String,
     hasOpen: { type: Boolean, default: false },
     options: { type: Array, required: true },
-    default: {
+    selectedValue: String,
+    defaultValue: {
       type: String,
       required: false,
       default: "",
@@ -50,15 +51,12 @@ export default defineComponent({
     dropdownStyle: { type: Object, required: false },
   },
   setup(props) {
-    const selected = ref(props.default || props.options?.[0]);
     const open = ref(false);
     const handleClick = (option: string) => {
-      selected.value = option;
       open.value = props.hasOpen;
       props.onClick(option);
     };
     return {
-      selected,
       label: props.label,
       open,
       handleClick,

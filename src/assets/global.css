@@ -39,3 +39,12 @@ a {
   padding: 0.8rem;
   color: white;
 }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0.3vw;
+  background: var(--gray);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--green100);
+  border-radius: 20px;
+}
