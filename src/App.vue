@@ -1,35 +1,32 @@
 <template>
   <Navbar />
-  <Modal :isOpen="isOpen">
-    <h1>Dummy Header</h1>
-    <p>With dummy content</p>
-  </Modal>
+  <WelcomeModal :hasWelcomePage="hasWelcomePage" :toggleModal="toggleModal" />
   <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import Navbar from "@/components/Navbar.vue";
-import Modal from "@/components/Modal.vue";
+import { WelcomeModal } from "@/components/modal";
 import { useStore } from "vuex";
 
 export default defineComponent({
   components: {
     Navbar,
-    Modal,
+    WelcomeModal,
   },
   setup() {
     const store = useStore();
-    const isOpen = ref(false);
+    const hasWelcomePage = ref(store.getters.readSetting("hasWelcomePage"));
     const toggleModal = () => {
-      isOpen.value = !isOpen.value;
+      hasWelcomePage.value = !hasWelcomePage.value;
     };
     onMounted(() => {
       document.body.style.fontFamily = store.getters.readSetting("font");
-      toggleModal();
     });
     return {
-      isOpen: isOpen.value,
+      hasWelcomePage,
+      toggleModal,
     };
   },
 });

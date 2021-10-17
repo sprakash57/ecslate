@@ -2,17 +2,15 @@
   <main class="darkBg container">
     <section class="container__section">
       <div>
-        <Switch :onChange="handleChange" :checked="hasWelcomePage" />
-        <p class="section__label">
-          Toggle this switch if welcome page annoys you.
-        </p>
+        <Switch :onChange="handleChange" :checked="settings.hasWelcomePage" />
+        <p class="section__label">Show welcome page when app boots up.</p>
       </div>
       <div>
         <Dropdown
           width="120px"
           :selectorStyle="customStyle"
           :dropdownStyle="customStyle"
-          :default="selectedFont"
+          :selectedValue="selectedValue"
           :onClick="handleFontChange"
           :options="fonts"
         />
@@ -61,7 +59,7 @@
 </style>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { Dropdown, Switch, Button } from "@/components/common";
 import { useStore } from "vuex";
 import { FONTS } from "@/helpers/constants";
@@ -76,20 +74,22 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const settings = store.getters.fetchSettings;
-    let hasWelcomePage = settings.hasWelcomePage;
+    const selectedValue = ref(settings.selectedFont);
     const handleReset = () => {
       store.commit(MutationType.ResetSettings);
-      window.location.reload();
+      settings.hasWelcomePage = true;
+      handleFontChange("monospace");
     };
     const handleChange = (e: Event) => {
       const target = e.target as HTMLInputElement;
-      hasWelcomePage = target.checked;
+      settings.hasWelcomePage = target.checked;
       store.commit(MutationType.WriteSetting, {
         key: "hasWelcomePage",
-        value: hasWelcomePage,
+        value: target.checked,
       });
     };
     const handleFontChange = (option: string) => {
+      selectedValue.value = option;
       store.commit(MutationType.WriteSetting, { key: "font", value: option });
       document.body.style.fontFamily = option;
     };
@@ -104,9 +104,9 @@ export default defineComponent({
       handleReset,
       handleFontChange,
       handleChange,
-      selectedFont: settings.font,
       fonts: FONTS,
-      hasWelcomePage,
+      settings,
+      selectedValue,
       customStyle,
     };
   },
