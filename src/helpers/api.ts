@@ -1,4 +1,5 @@
 import { SETTINGS } from "@/helpers/constants";
+import { Release } from "@/store/state";
 
 const fetchSettings = (): Record<string, any> => {
   try {
@@ -27,9 +28,33 @@ const reset = () => {
   window.localStorage.setItem("settings", JSON.stringify(SETTINGS));
 };
 
+const releases = async () => {
+  try {
+    const response = await fetch(
+      "https://api.github.com/repos/sprakash57/create-react-saga/releases"
+    );
+    const releases = (await response.json()) as Release[];
+    return releases.slice(0, 2);
+  } catch {
+    return [
+      {
+        tag_name: "1.0.0",
+        created_at: "2021-10-17T17:09:47Z",
+        body: "Not able to fetch",
+      },
+      {
+        tag_name: "0.9.0",
+        created_at: "2021-10-07T17:09:47Z",
+        body: "Not able to fetch",
+      },
+    ];
+  }
+};
+
 export default {
   fetchSettings,
   read,
   write,
   reset,
+  releases,
 };

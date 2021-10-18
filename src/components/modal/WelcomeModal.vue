@@ -3,7 +3,7 @@
     <header id="modalTitle">
       <h1>Welcome to Ecslate</h1>
       <img src="@/assets/ecslate.png" alt="Brandlogo">
-      <p>A utility app for JavaScript Developer by JavaScript Developer</p>
+      <p>A utility app for Web Developer by Web Developer</p>
       <small>v0.4.5</small>
     </header>
     <section id="modalDescription" class="darkBg">
