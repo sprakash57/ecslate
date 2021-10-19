@@ -73,7 +73,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    const settings = store.getters.fetchSettings;
+    const settings = store.state.settings;
     const selectedValue = ref(settings.selectedFont);
     const handleReset = () => {
       store.commit(MutationType.ResetSettings);

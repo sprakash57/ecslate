@@ -1,4 +1,4 @@
-import { SETTINGS } from "@/helpers/constants";
+import { VERSION, SETTINGS } from "@/helpers/constants";
 import { Release } from "@/store/state";
 
 const fetchSettings = (): Record<string, any> => {
@@ -31,24 +31,23 @@ const reset = () => {
 const releases = async () => {
   try {
     const response = await fetch(
-      "https://api.github.com/repos/sprakash57/create-react-saga/releases"
+      "https://api.github.com/repos/sprakash57/ecslate/releases"
     );
     const releases = (await response.json()) as Release[];
-    return releases.slice(0, 2);
+    return releases;
   } catch {
-    return [
-      {
-        tag_name: "1.0.0",
-        created_at: "2021-10-17T17:09:47Z",
-        body: "Not able to fetch",
-      },
-      {
-        tag_name: "0.9.0",
-        created_at: "2021-10-07T17:09:47Z",
-        body: "Not able to fetch",
-      },
-    ];
+    return VERSION;
   }
+};
+
+const setPersistedVersion = (value: Release[]) => {
+  window.localStorage.setItem("persistedVersion", JSON.stringify(value));
+};
+
+const getPersistedVersion = () => {
+  const version = window.localStorage.getItem("persistedVersion");
+  if (version) return JSON.parse(version)[0];
+  return false;
 };
 
 export default {
@@ -57,4 +56,6 @@ export default {
   write,
   reset,
   releases,
+  setPersistedVersion,
+  getPersistedVersion,
 };

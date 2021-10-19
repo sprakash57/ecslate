@@ -2,9 +2,9 @@ import api from "@/helpers/api";
 import packageJson from "../../package.json";
 
 export type Release = {
-  tag_name: string;
+  name: string;
   body: string;
-  created_at: string;
+  published_at: string;
 };
 
 export type State = {
@@ -12,6 +12,8 @@ export type State = {
   version: string;
   loading: boolean;
   releases: Release[];
+  newUpdate: string;
+  updateCheckError: boolean;
 };
 
 export const state: State = {
@@ -19,4 +21,6 @@ export const state: State = {
   version: packageJson.version,
   loading: false,
   releases: [],
+  newUpdate: "",
+  updateCheckError: false,
 };

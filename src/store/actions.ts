@@ -19,10 +19,16 @@ export type Actions = {
 };
 
 export const actions: ActionTree<State, State> & Actions = {
-  async [ActionTypes.GetReleases]({ commit }) {
-    commit(MutationType.SetLoading, true);
-    const data = await api.releases();
-    commit(MutationType.SetLoading, false);
-    commit(MutationType.SetReleases, data);
+  async [ActionTypes.GetReleases]({ commit }, checkForUpdate = false) {
+    try {
+      commit(MutationType.SetLoading, true);
+      const data = await api.releases();
+      commit(MutationType.SetLoading, false);
+      if (checkForUpdate) commit(MutationType.CheckForUpdate, data);
+      else commit(MutationType.SetReleases, data);
+    } catch (error) {
+      commit(MutationType.SetLoading, false);
+      commit(MutationType.SetUpdateError, true);
+    }
   },
 };

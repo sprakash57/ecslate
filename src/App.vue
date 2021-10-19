@@ -9,6 +9,8 @@ import { defineComponent, onMounted, ref } from "vue";
 import Navbar from "@/components/Navbar.vue";
 import { WelcomeModal } from "@/components/modal";
 import { useStore } from "vuex";
+import { ActionTypes } from "./store/actions";
+import api from "./helpers/api";
 
 export default defineComponent({
   components: {
@@ -23,6 +25,7 @@ export default defineComponent({
     };
     onMounted(() => {
       document.body.style.fontFamily = store.getters.readSetting("font");
+      if (!api.getPersistedVersion()) store.dispatch(ActionTypes.GetReleases);
     });
     return {
       hasWelcomePage,

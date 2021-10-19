@@ -1,20 +1,23 @@
+import { VERSION } from "@/helpers/constants";
+import { formattedDate } from "@/helpers/utils";
 import { GetterTree } from "vuex";
 import { Release, State } from "./state";
 
 export type Getters = {
-  fetchSettings(state: State): Record<string, any>;
   readSetting(state: State): (key: string) => string | boolean;
-  appVersion(state: State): string;
+  latestRelease(state: State): Release;
 };
 
 export const getters: GetterTree<State, State> & Getters = {
-  fetchSettings: (state: State) => {
-    return state.settings;
-  },
   readSetting: (state: State) => (key: string) => {
     return state.settings[key] as string | boolean;
   },
-  appVersion: (state: State) => {
-    return state.version;
+  latestRelease: (state: State) => {
+    const release =
+      state.releases.find((rel) => rel.name === state.version) || VERSION[0];
+    return {
+      ...release,
+      published_at: formattedDate(release.published_at),
+    };
   },
 };
