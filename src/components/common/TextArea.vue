@@ -5,7 +5,6 @@
     :value="modelValue"
     :cols="cols"
     :rows="rows"
-    :placeholder="placeholder"
     :style="customStyle"
   />
 </template>

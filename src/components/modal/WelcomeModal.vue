@@ -68,7 +68,7 @@
 #modalDescription {
   padding: 1rem;
   overflow: auto;
-  max-height: 350px;
+  max-height: 300px;
   border-radius: 5px;
 }
 </style>
