@@ -1,6 +1,6 @@
 {
   "name": "ecslate",
-  "version": "0.5.0",
+  "version": "0.6.1",
   "author": {
     "name": "Sunny Prakash",
     "url": "http://suprdev.netlify.app"
@@ -10,6 +10,7 @@
     "dev": "vue-cli-service electron:serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "dist": "vue-cli-service electron:build",
     "publish": "vue-cli-service electron:build --publish always",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"

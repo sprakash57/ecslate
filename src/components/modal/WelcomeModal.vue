@@ -1,10 +1,9 @@
 <template>
   <Modal :isOpen="hasWelcomePage" @close="toggleModal">
     <header id="modalTitle">
-      <h1>Welcome to Ecslate</h1>
+      <h1>Welcome to Ecslate<sup>{{version}}</sup></h1>
       <img src="@/assets/ecslate.png" alt="Brandlogo">
-      <p>A utility app for JavaScript Developer by JavaScript Developer</p>
-      <small>v0.4.5</small>
+      <p>A utility app for Web Developers by Web Developer</p>
     </header>
     <section id="modalDescription" class="darkBg">
       <div>
@@ -41,21 +40,35 @@
   text-align: center;
 }
 #modalTitle h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0 0 0.5rem 0;
+  color: white;
+  text-shadow: 2px 1px 3px var(--gray);
 }
 #modalTitle img {
-  width: 160px;
+  width: 140px;
   box-shadow: -3px 2px 13px 0px rgb(0 0 0 / 30%);
   border-radius: 20px;
 }
 #modalTitle p {
   margin: 0.5rem 0;
+  color: white;
+  text-shadow: 2px 1px 3px var(--gray);
+  font-weight: 600;
+}
+#modalTitle sup {
+  font-weight: 600;
+  background: var(--gray);
+  color: var(--green100);
+  font-size: 0.8rem;
+  padding: 0.4rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px hsl(153, 52%, 42%), -3px -2px 4px hsl(153, 46%, 59%);
 }
 #modalDescription {
   padding: 1rem;
   overflow: auto;
-  max-height: 350px;
+  max-height: 300px;
   border-radius: 5px;
 }
 </style>
@@ -63,6 +76,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Modal } from "@/components/modal";
+import { useStore } from "@/store";
 
 export default defineComponent({
   components: {
@@ -71,6 +85,12 @@ export default defineComponent({
   props: {
     hasWelcomePage: { type: Boolean, required: true },
     toggleModal: Function,
+  },
+  setup() {
+    const store = useStore();
+    return {
+      version: store.state.version,
+    };
   },
 });
 </script>

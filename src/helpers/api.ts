@@ -1,4 +1,5 @@
-import { SETTINGS } from "@/helpers/constants";
+import { VERSION, SETTINGS } from "@/helpers/constants";
+import { Release } from "@/store/state";
 
 const fetchSettings = (): Record<string, any> => {
   try {
@@ -27,9 +28,34 @@ const reset = () => {
   window.localStorage.setItem("settings", JSON.stringify(SETTINGS));
 };
 
+const releases = async () => {
+  try {
+    const response = await fetch(
+      "https://api.github.com/repos/sprakash57/ecslate/releases"
+    );
+    const releases = (await response.json()) as Release[];
+    return releases;
+  } catch {
+    return VERSION;
+  }
+};
+
+const setPersistedVersion = (value: Release[]) => {
+  window.localStorage.setItem("persistedVersion", JSON.stringify(value));
+};
+
+const getPersistedVersion = () => {
+  const version = window.localStorage.getItem("persistedVersion");
+  if (version) return JSON.parse(version)[0];
+  return false;
+};
+
 export default {
   fetchSettings,
   read,
   write,
   reset,
+  releases,
+  setPersistedVersion,
+  getPersistedVersion,
 };
