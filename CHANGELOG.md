@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/sprakash57/ecslate/pull/19) (2021-10-26)
+
+* About page for the application.
+* User can select desired location while installing the app.
+* Fixed a bug where App was crashing after installation.
+* New app icons and logos.
+
 ### [0.2.2](https://github.com/sprakash57/ecslate/compare/v0.1.0...v0.2.2) (2021-09-22)
 
 
