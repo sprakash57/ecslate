@@ -15,8 +15,7 @@ module.exports = {
                     installerIcon: "./src/assets/icon.ico",
                     installerHeaderIcon: "./src/assets/icon.ico",
                     installerSidebar: "./src/assets/sidebar.bmp",
-                    uninstallerIcon: "./src/assets/icon.ico",
-                    uninstallDisplayName: "Ecslate 0.6.1"
+                    uninstallerIcon: "./src/assets/icon.ico"
                 }
             }
         }

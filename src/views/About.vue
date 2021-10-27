@@ -60,7 +60,7 @@
       </div>
       <div class="update">
         <h4 v-if="newUpdate > version">🚀 A new version (v{{newUpdate}}) is available.</h4>
-        <ExternalLink v-if="newUpdate > version" :url="updateUrl" label="Go to downloads" />
+        <ExternalLink v-if="newUpdate > version" :url="downloadUrl" label="Download" :download="fileName" />
         <h4 v-if="newUpdate === version">👍 Congratulations! you have latest version.</h4>
         <h4 v-if="hasError">😕Something went wrong!</h4>
         <Button
@@ -150,7 +150,7 @@
 </style>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useStore } from "vuex";
 import { ExternalLink, Button } from "@/components/common";
 import { ActionTypes } from "@/store/actions";
@@ -169,14 +169,21 @@ export default defineComponent({
     const checkForUpdates = () => {
       store.dispatch(ActionTypes.GetReleases, true);
     };
+    const updateUrl = ref(
+      `https://github.com/sprakash57/ecslate/releases/download/v${newUpdate.value}`
+    );
+    const fileName = ref(`ecslate.Setup.${newUpdate.value}.exe`);
+    const downloadUrl = updateUrl.value + "/" + fileName;
+
     return {
       version: store.state.version,
       versionInfo,
       checkForUpdates,
       loading,
       newUpdate,
-      updateUrl: `https://github.com/sprakash57/ecslate/releases/tag/v${newUpdate.value}`,
+      downloadUrl,
       hasError,
+      fileName,
     };
   },
 });
