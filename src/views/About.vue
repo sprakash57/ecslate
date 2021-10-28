@@ -61,7 +61,7 @@
       <div class="update">
         <h4 v-if="newUpdate > version">🚀 A new version (v{{newUpdate}}) is available.</h4>
         <ExternalLink v-if="newUpdate > version" :url="downloadUrl" label="Download" :download="fileName" />
-        <h4 v-if="newUpdate === version">👍 Congratulations! you have latest version.</h4>
+        <h4 v-if="newUpdate === version">👍 Awesome! you have the latest version.</h4>
         <h4 v-if="hasError">😕Something went wrong!</h4>
         <Button
           v-if="newUpdate === version || newUpdate === ''"

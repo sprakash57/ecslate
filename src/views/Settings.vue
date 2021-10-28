@@ -16,6 +16,16 @@
         />
         <p class="section__label">Select font system that soothes your eyes.</p>
       </div>
+      <div>
+        <p class="section__label" style="margin-left: 0; margin-right: 0.5rem">
+          Help and support is available
+        </p>
+        <ExternalLink
+          url="https://github.com/sprakash57/ecslate/discussions"
+          label="here"
+          class="extLink"
+        />
+      </div>
     </section>
     <section class="container__reset">
       <Button
@@ -56,11 +66,14 @@
   background: var(--green100);
   box-shadow: 3px 3px 4px hsl(210, 28%, 21%), -3px -2px 4px hsl(210, 18%, 33%);
 }
+.extLink {
+  border-radius: 10px;
+}
 </style>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { Dropdown, Switch, Button } from "@/components/common";
+import { Dropdown, Switch, Button, ExternalLink } from "@/components/common";
 import { useStore } from "vuex";
 import { FONTS } from "@/helpers/constants";
 import { MutationType } from "@/store/mutation";
@@ -70,11 +83,12 @@ export default defineComponent({
     Dropdown,
     Switch,
     Button,
+    ExternalLink,
   },
   setup() {
     const store = useStore();
     const settings = store.state.settings;
-    const selectedValue = ref(settings.selectedFont);
+    const selectedValue = ref(settings.font);
     const handleReset = () => {
       store.commit(MutationType.ResetSettings);
       settings.hasWelcomePage = true;
@@ -99,6 +113,7 @@ export default defineComponent({
         "3px 3px 4px hsl(210, 28%, 21%), -3px -2px 4px hsl(210, 18%, 33%)",
       width: "120px",
       fontWeight: "500",
+      textTransform: "capitalize",
     };
     return {
       handleReset,

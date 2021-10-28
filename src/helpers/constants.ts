@@ -6,7 +6,13 @@ export const ROUTES = [
   { path: "/Execute", name: "Execute" },
 ];
 
-export const FONTS = ["monospace", "serif"];
+export const FONTS = [
+  "monospace",
+  "Source code",
+  "system-ui",
+  "Inconsolata",
+  "Space mono",
+];
 
 export const SETTINGS = {
   hasWelcomePage: true,

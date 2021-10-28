@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./fonts/Inconsolata-VariableFont_wdth,wght.ttf');
+    font-display: auto;
+    unicode-range: U+000-5FF;
+}
+@font-face {
+    font-family: 'Source code';
+    src: url('./fonts/SourceCodePro-Regular.ttf');
+    font-display: auto;
+    unicode-range: U+000-5FF;
+}
+@font-face {
+    font-family: 'Space mono';
+    src: url('./fonts/SpaceMono-Regular.ttf');
+    font-display: auto;
+    unicode-range: U+000-5FF;
+}
