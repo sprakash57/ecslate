@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/sprakash57/ecslate/pull/23) (2021-10-28)
+
+* More custom fonts available in settings.
+* Fixed broken download button in About page.
+* Minor fixes to the windows installer.
+
 ### [0.6.1](https://github.com/sprakash57/ecslate/pull/19) (2021-10-26)
 
 * About page for the application.

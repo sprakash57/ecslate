@@ -42,7 +42,7 @@ export const mutations: MutationTree<State> & Mutations = {
     api.setPersistedVersion(releases);
   },
   [MutationType.CheckForUpdate](state, releases) {
-    state.newUpdate = releases[0].name;
+    state.newUpdate = releases[0].name.replace("v", "");
     state.updateCheckError = false;
   },
   [MutationType.SetUpdateError](state, hasError) {

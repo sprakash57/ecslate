@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: ["url", "icon", "label"],
+  props: ["url", "icon", "label", "download"],
   setup(props) {
     return {
       iconSrc: props.icon ? require(`@/assets/icon/${props.icon}.svg`) : "",
@@ -12,7 +12,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <a :href="url" target="_blank" rel="noopener noreferrer" class="link">
+  <a
+    :href="url"
+    :download="download"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="link"
+  >
     <img :src="iconSrc" alt="label" v-if="icon" />
     <span>{{ label }}</span>
   </a>
@@ -21,10 +27,10 @@ export default defineComponent({
 <style scoped>
 .link {
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   border: none;
   background: var(--green100);
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem;
   margin-right: 0.5rem;
   box-shadow: 3px 3px 4px hsl(210, 28%, 21%), -3px -2px 4px hsl(210, 18%, 33%);
   border-radius: 1rem;

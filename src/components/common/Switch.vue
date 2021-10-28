@@ -26,7 +26,7 @@
   right: 0;
   bottom: 0;
   border-radius: 20px;
-  background-color: #ccc;
+  background-color: white;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
