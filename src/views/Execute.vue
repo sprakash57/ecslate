@@ -2,7 +2,7 @@
   <main class="container">
     <section class="fields">
       <div class="fields__io">
-        <TextArea v-model="editor" placeholder="JavaScript snippet..."/>
+        <TextArea v-model="editor" placeholder="JavaScript snippet..." />
       </div>
       <div class="fields__btn">
         <Button :onClick="runEditor" title="Execute">
@@ -13,6 +13,7 @@
         </Button>
       </div>
       <div class="fields__io">
+        <Clipboard />
         <div ref="output" class="darkBg fields__io__output" />
       </div>
     </section>
@@ -34,6 +35,7 @@
 }
 .fields__io {
   width: 100%;
+  position: relative;
 }
 .fields__btn {
   margin: 0 2rem;
@@ -61,12 +63,13 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { Button, TextArea } from '@/components/common';
+import { Button, TextArea, Clipboard } from "@/components/common";
 
 export default defineComponent({
   components: {
     Button,
-    TextArea
+    TextArea,
+    Clipboard,
   },
   setup() {
     const editor = ref("");

@@ -165,14 +165,14 @@ export default defineComponent({
     const loading = computed(() => store.state.loading);
     const newUpdate = computed(() => store.state.newUpdate);
     const hasError = computed(() => store.state.hasError);
-    const versionInfo = store.getters.latestRelease;
+    const versionInfo = computed(() => store.getters.latestRelease);
     const checkForUpdates = () => {
       store.dispatch(ActionTypes.GetReleases, true);
     };
     const updateUrl = ref(
       `https://github.com/sprakash57/ecslate/releases/download/v${newUpdate.value}`
     );
-    const fileName = ref(`ecslate.Setup.${newUpdate.value}.exe`);
+    const fileName = ref(`Ecslate.Setup.${newUpdate.value}.exe`);
     const downloadUrl = updateUrl.value + "/" + fileName;
 
     return {

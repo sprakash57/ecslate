@@ -1,14 +1,19 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, shell } from "electron";
+import { app, protocol, BrowserWindow, shell, Menu } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
+import menu from "./menu";
+
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } },
 ]);
+
+// Load custom menu
+Menu.setApplicationMenu(menu);
 
 async function createWindow() {
   // Create the browser window.
@@ -18,8 +23,9 @@ async function createWindow() {
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      nodeIntegration: !!process.env.ELECTRON_NODE_INTEGRATION,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
+      devTools: isDevelopment,
     },
   });
   // Open new window in browser
@@ -63,7 +69,7 @@ app.on("ready", async () => {
     try {
       await installExtension(VUEJS_DEVTOOLS);
     } catch (e) {
-      console.error("Vue Devtools failed to install:", e.toString());
+      console.error("Vue Devtools failed to install:", (e as any).toString());
     }
   }
   createWindow();
