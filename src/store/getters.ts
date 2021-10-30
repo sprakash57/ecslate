@@ -14,7 +14,9 @@ export const getters: GetterTree<State, State> & Getters = {
   },
   latestRelease: (state: State) => {
     const release =
-      state.releases.find((rel) => rel.name === state.version) || VERSION[0];
+      state.releases.find(
+        (rel) => rel.name.replace("v", "") === state.version
+      ) || VERSION[0];
     return {
       ...release,
       published_at: formattedDate(release.published_at),

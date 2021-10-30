@@ -2,7 +2,7 @@
   <main class="container">
     <section class="fields">
       <div class="fields__io">
-        <TextArea v-model="editor" placeholder="Type ugly..."/>
+        <TextArea v-model="editor" placeholder="Type ugly..." />
       </div>
       <div class="fields__btn">
         <Button :onClick="runBeautifier" title="Beautify">
@@ -11,9 +11,14 @@
         <Button :onClick="clearEditor" title="Reset">
           <img src="@/assets/icon/reset.svg" alt="Reset" />
         </Button>
-        <Dropdown :options="options" :onClick="selectInputType" default="JSON" />
+        <Dropdown
+          :options="options"
+          :onClick="selectInputType"
+          default="JSON"
+        />
       </div>
       <div class="fields__io">
+        <Clipboard />
         <div ref="output" class="darkBg fields__io__output" />
       </div>
     </section>
@@ -35,6 +40,7 @@
 }
 .fields__io {
   width: 100%;
+  position: relative;
 }
 .fields__btn {
   margin: 0 2rem;
@@ -61,9 +67,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Button from "@/components/common/Button.vue";
-import Dropdown from "@/components/common/Dropdown.vue";
-import TextArea from '@/components/common/TextArea.vue';
+import { Button, Clipboard, Dropdown, TextArea } from "@/components/common";
 import YAML from "yaml";
 
 export default defineComponent({
@@ -71,7 +75,8 @@ export default defineComponent({
   components: {
     Button,
     Dropdown,
-    TextArea
+    TextArea,
+    Clipboard,
   },
   setup() {
     const editor = ref("");
@@ -89,7 +94,7 @@ export default defineComponent({
     };
 
     const getStrAsInputType = () => {
-        switch (selectedOption) {
+      switch (selectedOption) {
         case "YAML": {
           const inputAsYaml = YAML.parse(editor.value);
           return YAML.stringify(inputAsYaml);
@@ -118,7 +123,7 @@ export default defineComponent({
       selectInputType,
       clearEditor,
       runBeautifier,
-      options
+      options,
     };
   },
 });

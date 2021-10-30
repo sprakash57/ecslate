@@ -3,3 +3,4 @@ export { default as Dropdown } from "./Dropdown.vue";
 export { default as TextArea } from "./TextArea.vue";
 export { default as Switch } from "./Switch.vue";
 export { default as ExternalLink } from "./ExternalLink.vue";
+export { default as Clipboard } from "./Clipboard.vue";
