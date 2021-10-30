@@ -83,8 +83,12 @@ export default defineComponent({
     const runEditor = (): void => {
       (<HTMLDivElement>output.value).innerHTML = "";
       (function (): void {
-        function createLogNode(message: string): HTMLDivElement {
-          const node = document.createElement("div");
+        function createLogNode(message: string): HTMLParagraphElement {
+          const node = document.createElement("p");
+          node.style.margin = "0.5rem 0";
+          if (message == undefined) {
+            node.style.color = "hsl(60deg 0% 51%)";
+          }
           const textNode = document.createTextNode(message);
           node.appendChild(textNode);
           return node;
@@ -100,10 +104,8 @@ export default defineComponent({
           console.log(`${message} on line ${lineno} and column ${colno}.`);
         };
       })();
-      /**
-       * Though its fine for now, but you might wanna check repl module
-       */
-      console.log(eval(editor.value));
+      const snippet = editor.value.concat(";console.log()"); // hide timer ids
+      console.log(eval(snippet));
     };
 
     return {
