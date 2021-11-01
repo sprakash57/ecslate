@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [v0.6.4]() (2021-10-31)
+### [v0.6.4](https://github.com/sprakash57/ecslate/compare/v0.6.2...v0.6.4) (2021-11-1)
 
 * Fixed a scenario where Executor was rendering magic number for timers.
 * Modified fonts' preloading strategy.
