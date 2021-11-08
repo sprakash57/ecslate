@@ -1,0 +1,6 @@
+* [Getting Started](/)
+* [Slates](slates.md)
+* [Settings](settings.md)
+* [Download](download.md)
+* [Support](support.md)
+* [Changelog](CHANGELOG.md)

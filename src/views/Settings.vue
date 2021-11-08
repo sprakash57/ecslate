@@ -10,7 +10,7 @@
           width="120px"
           :selectorStyle="customStyle"
           :dropdownStyle="customStyle"
-          :selectedValue="selectedValue"
+          :value="selectedValue"
           :onClick="handleFontChange"
           :options="fonts"
         />
@@ -23,6 +23,16 @@
         <ExternalLink
           url="https://github.com/sprakash57/ecslate/discussions"
           label="here"
+          class="extLink"
+        />
+      </div>
+      <div>
+        <p class="section__label" style="margin-left: 0; margin-right: 0.5rem">
+          Need your way around? Follow this
+        </p>
+        <ExternalLink
+          url="https://sprakash.github.io/ecslate"
+          label="Guide"
           class="extLink"
         />
       </div>

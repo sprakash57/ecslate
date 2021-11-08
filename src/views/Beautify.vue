@@ -14,7 +14,7 @@
         <Dropdown
           :options="options"
           :onClick="selectInputType"
-          default="JSON"
+          :value="selectedOption"
         />
       </div>
       <div class="fields__io">
@@ -71,7 +71,6 @@ import { Button, Clipboard, Dropdown, TextArea } from "@/components/common";
 import YAML from "yaml";
 
 export default defineComponent({
-  name: "Beautifier",
   components: {
     Button,
     Dropdown,
@@ -81,11 +80,11 @@ export default defineComponent({
   setup() {
     const editor = ref("");
     const output = ref();
+    let selectedOption = ref("JSON");
     const options = ["JSON", "YAML"];
-    let selectedOption: string = "JSON";
 
     const selectInputType = (option: string) => {
-      selectedOption = option;
+      selectedOption.value = option;
     };
 
     const clearEditor = () => {
@@ -94,7 +93,7 @@ export default defineComponent({
     };
 
     const getStrAsInputType = () => {
-      switch (selectedOption) {
+      switch (selectedOption.value) {
         case "YAML": {
           const inputAsYaml = YAML.parse(editor.value);
           return YAML.stringify(inputAsYaml);
@@ -124,6 +123,7 @@ export default defineComponent({
       clearEditor,
       runBeautifier,
       options,
+      selectedOption,
     };
   },
 });

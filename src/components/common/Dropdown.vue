@@ -11,7 +11,7 @@
       @blur="open = hasOpen"
     >
       <div class="selected" @click="open = !open">
-        {{ selectedValue || options[0] }}
+        {{ value || options[0] }}
       </div>
       <div class="items" :class="{ selectHide: !open }" :style="dropdownStyle">
         <div
@@ -31,16 +31,11 @@ import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   props: {
-    onClick: { type: Function, required: true },
+    value: String,
     label: String,
+    onClick: { type: Function, required: true },
     hasOpen: { type: Boolean, default: false },
     options: { type: Array, required: true },
-    selectedValue: String,
-    defaultValue: {
-      type: String,
-      required: false,
-      default: "",
-    },
     tabindex: {
       type: Number,
       required: false,

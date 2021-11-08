@@ -6,7 +6,7 @@
         <TextArea
           v-model="compareFrom"
           rows="19"
-          placeholder="Compare From..."
+          placeholder="Compare from..."
         />
       </div>
       <div class="fields__btn">
@@ -18,8 +18,8 @@
         </Button>
         <Dropdown
           :options="['Text', 'Object']"
-          :default="Text"
           :onClick="selectInputType"
+          :value="selectedOption"
         />
       </div>
       <div class="fields__output">
@@ -92,7 +92,7 @@ export default defineComponent({
     const output = ref();
     const compareTo = ref("");
     const compareFrom = ref("");
-    let selectedOption = "text";
+    let selectedOption = ref("Text");
 
     const resetFields = () => {
       (<HTMLDivElement>output.value).innerHTML = "";
@@ -100,9 +100,8 @@ export default defineComponent({
       compareFrom.value = "";
     };
 
-    const selectInputType = (e: Event) => {
-      const target = <HTMLSelectElement>e.target;
-      selectedOption = target.value;
+    const selectInputType = (option: string) => {
+      selectedOption.value = option;
     };
 
     const runCompare = () => {
@@ -110,7 +109,7 @@ export default defineComponent({
       let span: HTMLSpanElement, diff;
       const fragment = document.createDocumentFragment();
 
-      if (selectedOption === "object") {
+      if (selectedOption.value === "Object") {
         diff = Diff.diffLines(compareTo.value, compareFrom.value);
       } else {
         diff = Diff.diffChars(compareTo.value, compareFrom.value);
@@ -137,6 +136,7 @@ export default defineComponent({
       selectInputType,
       resetFields,
       runCompare,
+      selectedOption,
     };
   },
 });
