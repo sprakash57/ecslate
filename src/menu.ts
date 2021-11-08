@@ -64,7 +64,7 @@ const template: any = [
       {
         label: "Learn More",
         click: async () => {
-          await shell.openExternal("https://electronjs.org");
+          await shell.openExternal("https://sprakash.github.io/ecslate");
         },
       },
       {

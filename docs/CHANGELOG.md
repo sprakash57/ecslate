@@ -1,14 +1,9 @@
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ### [v0.6.5](https://github.com/sprakash57/ecslate/compare/v0.6.4...v0.6.5) (2021-11-9)
 
 * Documentation site is now available <a href="https://sprakash57.github.io/ecslate" target="_blank" rel="noopener noreferrer">here.</a>
 * New tagline for the App.
 * More relevant links and options have been added to native menu.
 * Fixed broken type selection in Compare and Beautify slates.
-
 ### [v0.6.4](https://github.com/sprakash57/ecslate/compare/v0.6.2...v0.6.4) (2021-11-1)
 
 * Fixed a scenario where Executor was rendering magic number for timers.
@@ -43,7 +38,7 @@ All notable changes to this project will be documented in this file. See [standa
 * Work in progress global theme.
 * Fixed few bugs.
 
-## v0.1.0 (2021-07-04)
+### v0.1.0 (2021-07-04)
 
 
 * Able to capture console.log and return both into dom ([e14354b](https://github.com/sprakash57/ecslate/commits/e14354b7ec89ca178883f7f2cb60df60d4b1d7b4))

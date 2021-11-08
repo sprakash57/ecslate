@@ -3,7 +3,7 @@
     <header class="header">
       <h1>Ecslate<sup>{{ version }}</sup></h1>
       <img src="@/assets/ecslate.png" alt="Brand logo">
-      <p>A utility app for Web Developers by Web Developer.</p>
+      <p>Introducing Slates!! Common tools for Web Developers</p>
     </header>
     <section class="darkBg description">
       <div class="description__latest">

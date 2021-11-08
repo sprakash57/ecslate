@@ -3,7 +3,7 @@
     <header id="modalTitle">
       <h1>Welcome to Ecslate<sup>{{version}}</sup></h1>
       <img src="@/assets/ecslate.png" alt="Brandlogo">
-      <p>A utility app for Web Developers by Web Developer</p>
+      <p>Introducing Slates!! Common tools for Web Developers</p>
     </header>
     <section id="modalDescription" class="darkBg">
       <div>
